@@ -22,4 +22,9 @@ public class UserControllerClass {
     public ResponseEntity<UserSignup> addUserData(@RequestBody UserSignup userSignup){
         return new ResponseEntity<UserSignup>(userServiceInterface.addUser(userSignup), HttpStatus.CREATED);
     }
+
+    @GetMapping("/login/{usernameOrEmail}/{password}")
+    public UserSignup getUserByUsernameOrEmail(@PathVariable String usernameOrEmail,@PathVariable String password) {
+        return userServiceInterface.getUserByUsernameOrEmail(usernameOrEmail,password);
+    }
 }
