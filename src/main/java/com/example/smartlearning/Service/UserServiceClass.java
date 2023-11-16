@@ -28,17 +28,25 @@ public class UserServiceClass implements UserServiceInterface {
     @Override
     public UserSignup getUserByUsernameOrEmail(String username, String password) {
         Optional<UserSignup> user = smlRepo.findByUsername(username);
-        Optional<UserSignup> uemail = smlRepo.findByEmail(username);
+//        Optional<UserSignup> email = smlRepo.findByEmail(username);
         String pass= user.get().getPassword();
-        if (Objects.equals(pass, password)){
+//        String passu= email.get().getPassword();
+        if ( (Objects.equals(pass, password))){
         if (user.isPresent()){
+            System.out.println(user.get());
             return  user.get();
-        } else if (uemail.isPresent()) {
-            return  uemail.get();
         }
         else {
-            return user.get();
+            return null;
         }}
+//        else if ((Objects.equals(passu, password))) {
+//            if (email.isPresent()) {
+//                System.out.println(email.get());
+//                return  email.get();
+//            }else {
+//                return null;
+//            }
+//        }
         else {
             return null;
         }
