@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name="Likes")
+@Table(name="history")
 public class History {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
