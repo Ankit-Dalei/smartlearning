@@ -26,6 +26,9 @@ public class Contents {
     private String description;
 
     @Column(nullable = false)
+    private String catagory;
+
+    @Column(nullable = false)
     private long likes;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -76,6 +79,14 @@ public class Contents {
         this.description = description;
     }
 
+    public String getCatagory() {
+        return catagory;
+    }
+
+    public void setCatagory(String catagory) {
+        this.catagory = catagory;
+    }
+
     public long getLike() {
         return likes;
     }
@@ -92,12 +103,13 @@ public class Contents {
         Datetime = datetime;
     }
 
-    public Contents(long id, String contentlink, byte[] thumbnail, String name, String description, long likes, Date datetime) {
+    public Contents(long id, String contentlink, byte[] thumbnail, String name, String description, String catagory,long likes, Date datetime) {
         this.id = id;
         this.contentlink = contentlink;
         this.thumbnail = thumbnail;
         this.name = name;
         this.description = description;
+        this.catagory = catagory;
         this.likes = likes;
         Datetime = datetime;
     }

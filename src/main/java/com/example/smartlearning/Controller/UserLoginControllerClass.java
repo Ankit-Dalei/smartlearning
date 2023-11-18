@@ -6,10 +6,9 @@ import com.example.smartlearning.UserSignup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -23,5 +22,10 @@ public class UserLoginControllerClass {
     @PostMapping("/api/login/post")
     public ResponseEntity<UserLogin> adduserlog(@RequestBody UserLogin userLogin){
         return new ResponseEntity<UserLogin>(userLoginInterface.logindetails(userLogin), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/api/getLoginUser")
+    public List<UserLogin> getAll(){
+        return userLoginInterface.getAll();
     }
 }

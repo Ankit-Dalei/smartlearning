@@ -27,12 +27,15 @@ public class ContentsController {
                                                 @RequestParam("contentlink") String contentlink,
                                                 @RequestParam("name") String name,
                                                 @RequestParam("description") String description,
-                                                @RequestParam("likes") Long likes){
+                                                @RequestParam("likes") Long likes,
+                                                @RequestParam("catagory") String catagory){
         Contents contents=new Contents();
         contents.setContentlink(contentlink);
         contents.setName(name);
         contents.setDescription(description);
         contents.setLike(likes);
+        contents.setCatagory(catagory);
+
         try{
             contents.setThumbnail(file.getBytes());
         }catch (IOException e){
@@ -44,5 +47,11 @@ public class ContentsController {
     @GetMapping("/api/Content")
     public List<Contents> getAllContents(){
         return contentServiceInterface.getContent();
+    }
+
+    @DeleteMapping("/api/deleteContent/{id}")
+    public ResponseEntity<String> delEmployeeById(@PathVariable("id") Long cid){
+        contentServiceInterface.DeleteContent(cid);
+        return ResponseEntity.ok("delete id:"+cid);
     }
 }

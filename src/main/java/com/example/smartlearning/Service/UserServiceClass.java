@@ -26,6 +26,11 @@ public class UserServiceClass implements UserServiceInterface {
     }
 
     @Override
+    public List<UserSignup> getAll() {
+        return smlRepo.findAll();
+    }
+
+    @Override
     public UserSignup getUserByUsernameOrEmail(String username, String password) {
         Optional<UserSignup> user = smlRepo.findByUsername(username);
 //        Optional<UserSignup> email = smlRepo.findByEmail(username);
@@ -49,6 +54,16 @@ public class UserServiceClass implements UserServiceInterface {
 //        }
         else {
             return null;
+        }
+    }
+
+    @Override
+    public void DelById(Long uid) {
+        Optional<UserSignup> emp= smlRepo.findById(uid);
+        if (emp.isPresent()){
+            smlRepo.deleteById(uid);
+        }
+        else {
         }
     }
 

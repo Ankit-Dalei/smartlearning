@@ -10,4 +10,6 @@ public interface ContentServiceInterface {
     Contents addContent(Contents contents);
 
     List<Contents> getContent();
+
+    void DeleteContent(Long cid);
 }
