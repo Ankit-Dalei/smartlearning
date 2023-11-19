@@ -54,4 +54,9 @@ public class ContentsController {
         contentServiceInterface.DeleteContent(cid);
         return ResponseEntity.ok("delete id:"+cid);
     }
+
+    @GetMapping("/api/content/{catagory}")
+    public List<Contents> getSelectContect(@PathVariable("catagory") String catagory){
+        return contentServiceInterface.getCatagoricalContent(catagory);
+    }
 }

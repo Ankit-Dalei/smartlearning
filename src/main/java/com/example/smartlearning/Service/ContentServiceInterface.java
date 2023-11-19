@@ -10,6 +10,7 @@ public interface ContentServiceInterface {
     Contents addContent(Contents contents);
 
     List<Contents> getContent();
+    List<Contents> getCatagoricalContent(String catagory);
 
     void DeleteContent(Long cid);
 }

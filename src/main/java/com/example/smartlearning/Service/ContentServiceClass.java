@@ -32,6 +32,12 @@ public class ContentServiceClass implements ContentServiceInterface{
     }
 
     @Override
+    public List<Contents> getCatagoricalContent(String catagory) {
+        return contentsRepo.findByCatagory(catagory);
+    }
+
+
+    @Override
     public void DeleteContent(Long cid) {
         Optional<Contents> emp= contentsRepo.findById(cid);
         if (emp.isPresent()){
